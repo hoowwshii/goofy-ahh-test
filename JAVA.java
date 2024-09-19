@@ -121,33 +121,51 @@ public class JAVA {
 
     public static void main(String[] args) throws Exception {
         ArrayList<Integer> arr = new ArrayList<Integer>();
-        try(Scanner scanner = new Scanner(new File("file.txt"))){
+        try(Scanner scanner = new Scanner(new File("file1.txt"))){
             while (scanner.hasNextInt()){
                 Integer temp = scanner.nextInt();
                 arr.add(temp);
             }
         }
+        ArrayList<Integer> arr2= new ArrayList<Integer>();
+        try(Scanner scanner = new Scanner(new File("file2.txt"))){
+            while (scanner.hasNextInt()){
+                Integer temp = scanner.nextInt();
+                arr2.add(temp);
+            }
+        }
+        ArrayList<Integer> arr3= new ArrayList<Integer>();
+        try(Scanner scanner = new Scanner(new File("file3.txt"))){
+            while (scanner.hasNextInt()){
+                Integer temp = scanner.nextInt();
+                arr3.add(temp);
+            }
+        }
+        ArrayList<ArrayList<Integer> > ArrayofArrays = new ArrayList<ArrayList<Integer>>();
+        ArrayofArrays.add(arr);
+        ArrayofArrays.add(arr2);
+        ArrayofArrays.add(arr3);
         for(int i = 1 ; i<=3; i++){
-        ArrayList<Integer> copy1 = new ArrayList<>(arr); 
-        ArrayList<Integer> copy2 = new ArrayList<>(arr);
-        ArrayList<Integer> copy3 = new ArrayList<>(arr);
+        ArrayList<Integer> copy1 = new ArrayList<>(ArrayofArrays.get(i-1)); 
+        ArrayList<Integer> copy2 = new ArrayList<>(ArrayofArrays.get(i-1));
+        ArrayList<Integer> copy3 = new ArrayList<>(ArrayofArrays.get(i-1));
 
-        long start = System.currentTimeMillis();
+        long start = (long) System.nanoTime();
         bubbleSort(copy1, copy1.size());
-        long end = System.currentTimeMillis();
-        long elapsed = end-start;
+        long end = (long) System.nanoTime();
+        float elapsed = (float)(end-start) / 1_000_000f;
         System.out.println("Bubble sort run ke " + i + " mencetak waktu: " +elapsed + "ms");
         
-        start=System.currentTimeMillis();
+        start=System.nanoTime();
         mergeSort(copy2, 0, copy2.size()-1);
-        end=System.currentTimeMillis(); 
-        elapsed = end-start;
+        end=System.nanoTime(); 
+        elapsed = (float)(end-start) / 1_000_000f;
         System.out.println("Mergesort run ke " + i + " mencetak waktu: " +elapsed + "ms");
         
-        start=System.currentTimeMillis();
+        start=System.nanoTime();
         quickSort(copy3, 0, copy3.size()-1);
-        end=System.currentTimeMillis(); 
-        elapsed = end-start;
+        end=System.nanoTime(); 
+        elapsed = (float)(end-start) / 1_000_000f;
         System.out.println("Quicksort run ke " + i + " mencetak waktu: " +elapsed+"ms");
     }
           

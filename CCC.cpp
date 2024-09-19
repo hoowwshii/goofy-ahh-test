@@ -131,18 +131,35 @@ void bubbleSort(vector<int> arr, int n)
 
 
 int main(){
-    ifstream file("file.txt");
+    ifstream file("file1.txt");
     vector<int> arr;
     int value;
     while(file >> value){
         arr.push_back(value);
     }
-
+    file.close();
+    ifstream file2("file2.txt");
+    vector<int> arr2;
+    int vari;
+    while(file2>>vari){
+        arr2.push_back(vari);
+    }
+    file2.close();
+    ifstream file3("file3.txt");
+    vector<int> arr3;
+    int vari3;
+    while(file3>>vari3){
+        arr3.push_back(vari3);
+    }
+    file3.close();
+    vector<vector<int>> ArrayOfArrays = {arr, arr2, arr3};
+   // cout << arr.size() <<" " <<arr2.size() << " " <<arr3.size(); 
+    
     for (int i = 1; i <= 3; i++)
     {
-    vector<int> copy1 = arr;
-    vector<int> copy2 = arr;
-    vector<int> copy3 = arr;
+    vector<int> copy1 = ArrayOfArrays[i-1];
+    vector<int> copy2 = ArrayOfArrays[i-1];
+    vector<int> copy3 = ArrayOfArrays[i-1];
     
     auto start = chrono::high_resolution_clock::now();
     bubbleSort(copy1, copy1.size());
