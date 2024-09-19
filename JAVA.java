@@ -1,6 +1,6 @@
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
 public class JAVA {
     public static int partition(ArrayList<Integer> list, int low, int high) {
         // Choose the pivot
